@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages (with VITE settings)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Change this to '/<repo-name>/' if the site will be served from a subpath (e.g. https://<user>.github.io/eleviq-website/)
+      VITE_BASE: '/eleviq-website/'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (reads VITE_BASE and optional VITE_FORM_ENDPOINT)
+        run: npm run build
+        env:
+          VITE_BASE: ${{ env.VITE_BASE }}
+          VITE_FORM_ENDPOINT: ${{ secrets.FORM_ENDPOINT }}
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages

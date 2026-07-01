@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{--brand-navy:#071A2F;--brand-cyan:#00E6FF}
+
+/* Smooth animations */
+*{transition:color .18s ease,background-color .18s ease,transform .18s ease}
+
+/* Utility for visually-hidden */
+.sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}

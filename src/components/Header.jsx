@@ -21,7 +21,7 @@ export default function Header(){
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <div className="w-12 h-12 flex items-center justify-center group-hover:scale-105 transition-transform duration-pro-fast">
-            <img src="/logo.png" alt="Eleviq Logo" className="w-full h-full object-contain" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Eleviq Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tighter">Eleviq</span>

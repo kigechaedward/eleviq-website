@@ -8,5 +8,23 @@
 /* Smooth animations */
 *{transition:color .18s ease,background-color .18s ease,transform .18s ease}
 
+/* Parallax helper */
+.parallax{will-change:transform;transform:translateZ(0);transition:transform .2s linear}
+
+/* Device mockup */
+.device-mockup{border-radius:.75rem;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.08);}
+.device-screen{display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.device-notch{height:6px}
+
+/* Animation utilities */
+@keyframes subtle-pulse{0%{opacity:.9;transform:scale(1)}50%{opacity:.6;transform:scale(1.05)}100%{opacity:.9;transform:scale(1)}}
+.orb-anim{animation:subtle-pulse 6s ease-in-out infinite}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important}
+  .orb-anim{animation:none}
+}
+
 /* Utility for visually-hidden */
 .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}

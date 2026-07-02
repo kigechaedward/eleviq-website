@@ -17,34 +17,38 @@ export default function Header(){
   ]
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur bg-white/60 dark:bg-slate-900/60 border-b border-slate-200 dark:border-slate-800">
+    <header className="sticky top-0 z-50 backdrop-blur-sm bg-white/95 dark:bg-dark-surface/95 border-b border-accent/20 dark:border-dark-muted/20 shadow-sm">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <rect width="24" height="24" rx="6" fill="url(#g)" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden className="group-hover:scale-110 transition-transform duration-fast">
+            <rect width="24" height="24" rx="6" fill="url(#grad)" />
+            <circle cx="12" cy="12" r="4" fill="white" opacity="0.9" />
             <defs>
-              <linearGradient id="g" x1="0" x2="1">
-                <stop offset="0" stopColor="#00E6FF" />
-                <stop offset="1" stopColor="#2DB7FF" />
+              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#00D4FF" />
+                <stop offset="1" stopColor="#0A1F3F" />
               </linearGradient>
             </defs>
           </svg>
-          <div className="text-sm font-semibold">Eleviq Technologies</div>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold text-secondary dark:text-white">Eleviq</span>
+            <span className="text-xs text-primary font-semibold tracking-wide">Technologies</span>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex gap-6 items-center">
+        <nav className="hidden md:flex gap-8 items-center">
           {nav.map(item=> (
-            <Link key={item.to} to={item.to} className={`text-sm ${location.pathname===item.to? 'font-semibold text-navy dark:text-white':'text-slate-700 dark:text-slate-300'}`}>
+            <Link key={item.to} to={item.to} className={`text-sm font-medium transition-colors duration-fast ${location.pathname===item.to? 'text-primary font-semibold':'text-slate-700 dark:text-slate-300 hover:text-primary'}`}>
               {item.label}
             </Link>
           ))}
-          <button aria-label="Toggle dark mode" onClick={()=>setDark(d=>!d)} className="text-sm px-3 py-1 rounded-md ring-1 ring-slate-200 dark:ring-slate-700">
-            {dark? 'Light' : 'Dark'}
+          <button aria-label="Toggle dark mode" onClick={()=>setDark(d=>!d)} className="px-3 py-2 rounded-lg bg-accent/50 hover:bg-accent text-secondary dark:bg-dark-muted/30 dark:hover:bg-dark-muted/50 dark:text-white font-medium text-sm transition-all duration-fast">
+            {dark? '☀️ Light' : '🌙 Dark'}
           </button>
         </nav>
 
         <div className="md:hidden">
-          <Link to="/contact" className="text-sm px-3 py-2 bg-cyan-400 text-navy rounded-md font-semibold">Contact</Link>
+          <Link to="/contact" className="text-sm px-4 py-2 bg-primary hover:bg-primary/90 text-secondary rounded-lg font-semibold transition-all duration-fast">Contact</Link>
         </div>
       </div>
     </header>

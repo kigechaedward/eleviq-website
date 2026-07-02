@@ -33,7 +33,7 @@ export default function Hero(){
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold leading-tight text-slate-900 dark:text-white mb-6">
-              Elevating <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Digital Intelligence</span>
+              Evolving with <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Technology</span>
             </h1>
             
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">

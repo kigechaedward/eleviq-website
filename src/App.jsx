@@ -13,7 +13,7 @@ export default function App(){
   useEffect(()=>{
     // Basic SEO: update document title per route
     const titleMap = {
-      '/': 'Eleviq Technologies — Elevating Digital Intelligence',
+      '/': 'Eleviq Technologies — Evolving with Technology',
       '/about': 'About — Eleviq Technologies',
       '/services': 'Services — Eleviq Technologies',
       '/portfolio': 'Portfolio — Eleviq Technologies',

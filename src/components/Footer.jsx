@@ -15,7 +15,7 @@ export default function Footer(){
               </div>
               <span className="font-bold">Eleviq</span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-4">Elevating Digital Intelligence. Modern tech solutions from Nairobi.</p>
+            <p className="text-slate-400 text-sm leading-relaxed mb-4">Evolving with Technology. Modern tech solutions from Nairobi.</p>
             <p className="text-sm"><a href="mailto:info@eleviqtechnologies.net" className="text-cyan-400 hover:text-cyan-300">info@eleviqtechnologies.net</a></p>
             <p className="text-sm text-slate-400">+254790683823</p>
           </div>

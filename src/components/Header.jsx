@@ -20,8 +20,8 @@ export default function Header(){
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-dark-bg/80 border-b border-slate-200/50 dark:border-slate-800/50">
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-cyan-glow group-hover:rotate-6 transition-transform duration-pro-fast">
-            <span className="text-white font-bold text-xl">E</span>
+          <div className="w-12 h-12 flex items-center justify-center group-hover:scale-105 transition-transform duration-pro-fast">
+            <img src="/logo.png" alt="Eleviq Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tighter">Eleviq</span>

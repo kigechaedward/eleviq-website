@@ -697,7 +697,7 @@ export function Hero() {
       <div className="max-w-container mx-auto grid grid-cols-2 gap-lg items-center md:grid-cols-1">
         <div>
           <h1 className="text-6xl font-800 leading-tight text-secondary balance">
-            Elevating Digital Intelligence
+            Evolving with Technology
           </h1>
           <p className="text-lg leading-relaxed text-muted mt-md max-w-75ch">
             Custom software, AI automation, and cloud solutions for startups and enterprises.

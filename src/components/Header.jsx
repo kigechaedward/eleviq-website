@@ -17,38 +17,33 @@ export default function Header(){
   ]
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-sm bg-white/95 dark:bg-dark-surface/95 border-b border-accent/20 dark:border-dark-muted/20 shadow-sm">
-      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-dark-bg/80 border-b border-slate-200/50 dark:border-slate-800/50">
+      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden className="group-hover:scale-110 transition-transform duration-fast">
-            <rect width="24" height="24" rx="6" fill="url(#grad)" />
-            <circle cx="12" cy="12" r="4" fill="white" opacity="0.9" />
-            <defs>
-              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#00D4FF" />
-                <stop offset="1" stopColor="#0A1F3F" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold text-secondary dark:text-white">Eleviq</span>
-            <span className="text-xs text-primary font-semibold tracking-wide">Technologies</span>
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-cyan-glow group-hover:rotate-6 transition-transform duration-pro-fast">
+            <span className="text-white font-bold text-xl">E</span>
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tighter">Eleviq</span>
+            <span className="text-[10px] text-primary font-bold uppercase tracking-widest">Technologies</span>
           </div>
         </Link>
 
-        <nav className="hidden md:flex gap-8 items-center">
+        <nav className="hidden md:flex gap-8 items-center bg-slate-100/50 dark:bg-slate-800/50 px-6 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
           {nav.map(item=> (
-            <Link key={item.to} to={item.to} className={`text-sm font-medium transition-colors duration-fast ${location.pathname===item.to? 'text-primary font-semibold':'text-slate-700 dark:text-slate-300 hover:text-primary'}`}>
+            <Link key={item.to} to={item.to} className={`text-xs font-bold uppercase tracking-wider transition-all duration-pro-fast ${location.pathname===item.to? 'text-primary':'text-slate-500 dark:text-slate-400 hover:text-primary'}`}>
               {item.label}
             </Link>
           ))}
-          <button aria-label="Toggle dark mode" onClick={()=>setDark(d=>!d)} className="px-3 py-2 rounded-lg bg-accent/50 hover:bg-accent text-secondary dark:bg-dark-muted/30 dark:hover:bg-dark-muted/50 dark:text-white font-medium text-sm transition-all duration-fast">
-            {dark? '☀️ Light' : '🌙 Dark'}
-          </button>
         </nav>
 
-        <div className="md:hidden">
-          <Link to="/contact" className="text-sm px-4 py-2 bg-primary hover:bg-primary/90 text-secondary rounded-lg font-semibold transition-all duration-fast">Contact</Link>
+        <div className="flex items-center gap-4">
+          <button aria-label="Toggle dark mode" onClick={()=>setDark(d=>!d)} className="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-soft hover:shadow-soft-hover transition-all">
+            {dark? '☀️' : '🌙'}
+          </button>
+          <Link to="/contact" className="hidden sm:block text-xs uppercase tracking-widest px-6 py-3 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 rounded-xl font-bold hover:shadow-lg transition-all active:scale-95">
+            Hire Us
+          </Link>
         </div>
       </div>
     </header>

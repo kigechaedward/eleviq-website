@@ -10,79 +10,84 @@ export default function Home(){
       <Hero />
 
       {/* Services */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Our Services</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Comprehensive solutions for every stage of your digital journey</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-h2 font-bold text-slate-900 dark:text-white mb-4 tracking-tight leading-display">
+                Engineered for <span className="text-primary">Performance</span>
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400">Comprehensive solutions for every stage of your digital journey, built with Swiss-style precision.</p>
+            </div>
+            <Link to="/services" className="text-primary font-semibold flex items-center gap-2 group hover:translate-x-1 transition-transform duration-pro-fast">
+              View all services <span className="text-xl">→</span>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, i) => (
-              <div key={service.title} className="group p-8 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-cyan-400 hover:shadow-xl transition-all hover:-translate-y-2">
-                <div className="text-4xl mb-4">
-                  {['⚙️', '🌐', '📱', '🤖', '💡', '☁️', '📊', '🔍', '🛍️'][i]}
+            {SERVICES.slice(0, 6).map((service, i) => (
+              <div key={service.title}
+                   className="group p-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-soft hover:shadow-soft-hover hover:border-primary/30 transition-all duration-pro-base ease-pro-max hover:-translate-y-2 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-pro-base"></div>
+                <div className="w-12 h-12 mb-6 bg-accent dark:bg-primary/10 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-pro-base">
+                  {['⚡', '🌐', '📱', '🤖', '💡', '☁️'][i] || '⚙️'}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-cyan-600 transition-colors">{service.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400">{service.desc}</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{service.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      {/* Bento Grid Portfolio */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Why Eleviq?</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400">We combine technical excellence with business acumen</p>
+            <h2 className="text-h2 font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Featured <span className="text-primary">Impact</span></h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">A selection of our most challenging and rewarding transformations.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {title: 'Proven Delivery', desc: 'Years of experience across fintech, logistics, agritech, and enterprise sectors with a track record of successful launches.', icon: '✓'},
-              {title: 'Design-Led Engineering', desc: 'Beautiful, scalable code that prioritizes user experience without compromising performance or security.', icon: '🎨'},
-              {title: 'Data-Driven Strategy', desc: 'Every decision backed by analytics and business metrics. We measure success by your ROI.', icon: '📈'}
-            ].map((item, i) => (
-              <div key={i} className="p-8 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400">{item.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-full md:h-[600px]">
+            {/* Main Featured Item */}
+            <div className="md:col-span-2 md:row-span-2 group relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-soft hover:shadow-soft-hover transition-all duration-pro-base">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10"></div>
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-0 p-8 z-20">
+                <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full mb-4 inline-block">Flagship Project</span>
+                <h3 className="text-2xl font-bold text-white mb-2">{PROJECTS[0]?.name || 'Abiri Logistics'}</h3>
+                <p className="text-slate-300 text-sm mb-4 line-clamp-2">{PROJECTS[0]?.desc || 'Route optimization and digital freight management platform.'}</p>
+                <Link to="/portfolio" className="text-white font-semibold flex items-center gap-2 text-sm group-hover:gap-3 transition-all">
+                  View Case Study <span>→</span>
+                </Link>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Portfolio */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Featured Projects</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400">Showcasing our recent work</p>
-          </div>
+            {/* Side Items */}
+            <div className="md:col-span-2 group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-soft-hover transition-all duration-pro-base">
+              <div className="p-8 h-full flex flex-col justify-center">
+                <span className="text-primary text-xs font-bold mb-2 uppercase tracking-widest">SaaS Architecture</span>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{PROJECTS[1]?.name || 'HobbyPlan'}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-1">{PROJECTS[1]?.desc || 'SaaS monetization and user management system.'}</p>
+              </div>
+            </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {PROJECTS.map(project => (
-              <div key={project.name} className="group p-6 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-cyan-400 hover:shadow-xl transition-all cursor-pointer hover:-translate-y-1">
-                <div className="flex items-start justify-between mb-3">
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white">{project.name}</h4>
-                  <span className="text-xs font-semibold px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-400 rounded-full">{project.type}</span>
+            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary to-blue-600 shadow-soft hover:shadow-soft-hover transition-all duration-pro-base">
+              <div className="p-8 h-full flex flex-col justify-center text-white">
+                <h3 className="text-3xl font-bold mb-1">27%</h3>
+                <p className="text-cyan-100 text-xs font-medium uppercase">Efficiency Gain</p>
+                <div className="mt-4 h-1 w-12 bg-white/30 rounded-full overflow-hidden">
+                  <div className="h-full bg-white w-2/3"></div>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">{project.desc}</p>
+              </div>
+            </div>
 
-                            {/* Device mockup preview for larger screens */}
-                            <div className="mt-4 hidden md:block">
-                              <div className="device-mockup w-56 h-36 bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 relative">
-                                <div className="device-screen w-full h-full bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 flex items-center justify-center text-sm text-slate-500">{project.name} preview</div>
-                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full bg-slate-200 dark:bg-slate-700" />
-                              </div>
-                            </div>
-
-                            <p className="mt-4 text-sm text-cyan-600 dark:text-cyan-400 font-semibold">→ Case study coming soon</p>
-                          </div>
-                        ))}
+            <div className="group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-soft-hover transition-all duration-pro-base">
+              <div className="p-8 h-full flex flex-col justify-center">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">AniTrace</h3>
+                <p className="text-slate-500 text-xs font-medium">IoT Wildlife Tracking</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

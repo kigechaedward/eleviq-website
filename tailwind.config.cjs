@@ -54,13 +54,21 @@ module.exports = {
         '3xl': '4rem'
       },
       transitionDuration: {
+        'pro-fast': '150ms',
+        'pro-base': '300ms',
         fast: '150ms',
         base: '300ms',
         slow: '600ms'
       },
       transitionTimingFunction: {
+        'pro-max': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         smooth: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         ease: 'ease-out'
+      },
+      boxShadow: {
+        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 10px -2px rgba(0, 0, 0, 0.03)',
+        'soft-hover': '0 20px 40px -12px rgba(0, 0, 0, 0.1)',
+        'cyan-glow': '0 0 20px rgba(0, 212, 255, 0.3)',
       },
       letterSpacing: {
         tighter: '-0.02em',

@@ -81,7 +81,10 @@ const translations = {
     // Careers
     join_evolution: "Join the Evolution",
     careers_desc: "We're looking for high-performance individuals who want to build the future of digital ecosystems. At Eleviq, we value precision, aesthetics, and results.",
-    open_positions: "Open Positions", apply_now: "Apply Now", dont_see_fit: "Don't see a fit?", exceptional_talent: "We're always looking for exceptional talent. Send us a transmission."
+    open_positions: "Open Positions", apply_now: "Apply Now", dont_see_fit: "Don't see a fit?", exceptional_talent: "We're always looking for exceptional talent. Send us a transmission.",
+
+    // WhatsApp
+    whatsapp_chat: "Chat with us"
   },
   sw: {
     home: "Nyumbani", about: "Kuhusu", services: "Huduma", portfolio: "Kazi", contact: "Wasiliana", hire_us: "Tuajiri", careers: "Kazi",
@@ -93,7 +96,8 @@ const translations = {
     view_all_services: "Uvumbuzi", flagship: "Kuu", deep_dive: "Angalia Zaidi",
     ready_to_evolve: "Tayari Kukua?", send_transmission: "Tuma Ujumbe",
     footer_desc: "Kukua na Teknolojia. Tunajenga mifumo ya kidijitali kwa wavumbuzi.",
-    all_rights: "Haki zote zimehifadhiwa.", handcrafted: "Imeundwa Nairobi"
+    all_rights: "Haki zote zimehifadhiwa.", handcrafted: "Imeundwa Nairobi",
+    whatsapp_chat: "Zungumza nasi"
   },
   zh: {
     home: "首页", about: "关于", services: "服务", portfolio: "案例", contact: "联系", hire_us: "聘请我们",
@@ -102,7 +106,33 @@ const translations = {
     p1_n: "Abiri", p1_d: "路线优化和车队跟踪。",
     capabilities: "核心能力", engineered_for: "精准工程", performance: "数字方案",
     view_all_services: "探索", flagship: "旗舰", deep_dive: "深入了解",
-    send_transmission: "发送信息", footer_desc: "与科技共进。我们构建高性能数字生态。"
+    send_transmission: "发送信息", footer_desc: "与科技共进。我们构建高性能数字生态。",
+    whatsapp_chat: "与我们聊天"
+  },
+  es: {
+    home: "Inicio", about: "Nosotros", services: "Servicios", portfolio: "Portafolio", contact: "Contacto", hire_us: "Contrátanos",
+    hero_title: "Evolucionando con", hero_span: "Tecnología",
+    whatsapp_chat: "Chatea con nosotros"
+  },
+  fr: {
+    home: "Accueil", about: "À propos", services: "Services", portfolio: "Portfolio", contact: "Contact", hire_us: "Recrutez-nous",
+    hero_title: "Évoluer avec la", hero_span: "Technologie",
+    whatsapp_chat: "Discutez avec nous"
+  },
+  ja: {
+    home: "ホーム", about: "会社概要", services: "サービス", portfolio: "実績", contact: "お問い合わせ", hire_us: "採用する",
+    hero_title: "テクノロジーと共に", hero_span: "進化する",
+    whatsapp_chat: "チャットする"
+  },
+  ko: {
+    home: "홈", about: "소개", services: "서비스", portfolio: "포트폴리오", contact: "문의", hire_us: "채용하기",
+    hero_title: "기술과 함께", hero_span: "진화하다",
+    whatsapp_chat: "채팅하기"
+  },
+  hi: {
+    home: "होम", about: "हमारे बारे में", services: "सेवाएं", portfolio: "पोर्टफोलियो", contact: "संपर्क", hire_us: "हमें नियुक्त करें",
+    hero_title: "तकनीक के साथ", hero_span: "विकास",
+    whatsapp_chat: "हमसे चैट करें"
   }
 };
 

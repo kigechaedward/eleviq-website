@@ -11,6 +11,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App(){
   const location = useLocation()
@@ -53,6 +54,7 @@ export default function App(){
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

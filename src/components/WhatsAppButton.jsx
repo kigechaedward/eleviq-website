@@ -12,11 +12,11 @@ export default function WhatsAppButton() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[60] group flex items-center gap-3 active:scale-95 transition-all duration-pro-base"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 md:bottom-8 z-[60] group flex items-center gap-3 active:scale-95 transition-all duration-pro-base"
       aria-label="Chat on WhatsApp"
     >
-      {/* Tooltip - Hidden on very small screens to avoid layout overflow */}
-      <div className="hidden sm:block absolute right-full mr-4 px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 rounded-xl shadow-soft opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-pro-base pointer-events-none whitespace-nowrap">
+      {/* Tooltip - Hidden on mobile, shown on desktop right-aligned */}
+      <div className="hidden md:block absolute right-full mr-4 px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 rounded-xl shadow-soft opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-pro-base pointer-events-none whitespace-nowrap">
         <p className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white">{t('whatsapp_chat')}</p>
       </div>
 

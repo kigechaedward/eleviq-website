@@ -62,7 +62,7 @@ export default function Home(){
       </section>
 
       {/* Bento Grid Portfolio - Visual Impact */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950/50">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950/50 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 reveal-on-scroll">
             <h2 className="text-h2 font-extrabold text-slate-900 dark:text-white mb-4 tracking-tighter">{t('selected_artifacts')}</h2>
@@ -118,7 +118,7 @@ export default function Home(){
       </section>
 
       {/* Testimonials - Executive Presence */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             <div className="reveal-on-scroll">

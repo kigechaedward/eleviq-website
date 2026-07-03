@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../utils/i18n'
 
 export default function Footer(){
+  const { t } = useTranslation()
   const year = new Date().getFullYear()
   
   return (
@@ -13,7 +15,7 @@ export default function Footer(){
           <div className="md:col-span-3">
             <Link to="/" className="flex items-center gap-4 mb-8 group">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img src="/logo.png" alt="Eleviq Logo" className="w-full h-full object-contain" />
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Eleviq Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-2xl font-black tracking-tighter">Eleviq</span>
@@ -21,7 +23,7 @@ export default function Footer(){
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-8">
-              Evolving with Technology. We build high-performance digital ecosystems for global innovators.
+              {t('footer_desc')}
             </p>
             <div className="flex gap-4">
               <a href="mailto:info@eleviqtechnologies.net" className="text-xs font-bold text-white hover:text-primary transition-colors">info@eleviqtechnologies.net</a>
@@ -29,27 +31,27 @@ export default function Footer(){
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Navigation</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">{t('navigation')}</h4>
             <ul className="space-y-4 text-sm font-bold">
-              <li><Link to="/services" className="text-slate-400 hover:text-white transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="text-slate-400 hover:text-white transition-colors">Portfolio</Link></li>
-              <li><Link to="/about" className="text-slate-400 hover:text-white transition-colors">About</Link></li>
-              <li><Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-white transition-colors">{t('services')}</Link></li>
+              <li><Link to="/portfolio" className="text-slate-400 hover:text-white transition-colors">{t('portfolio')}</Link></li>
+              <li><Link to="/about" className="text-slate-400 hover:text-white transition-colors">{t('about')}</Link></li>
+              <li><Link to="/contact" className="text-slate-400 hover:text-white transition-colors">{t('contact')}</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Company</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">{t('company')}</h4>
             <ul className="space-y-4 text-sm font-bold">
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Blog</a></li>
-              <li><Link to="/careers" className="text-slate-400 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">Privacy</Link></li>
-              <li><Link to="/terms" className="text-slate-400 hover:text-white transition-colors">Terms</Link></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">{t('blog')}</a></li>
+              <li><Link to="/careers" className="text-slate-400 hover:text-white transition-colors">{t('careers')}</Link></li>
+              <li><Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">{t('privacy')}</Link></li>
+              <li><Link to="/terms" className="text-slate-400 hover:text-white transition-colors">{t('terms')}</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Connect</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">{t('connect')}</h4>
             <ul className="space-y-4 text-sm font-bold">
               <li><a href="#" className="text-slate-400 hover:text-white transition-colors">LinkedIn</a></li>
               <li><a href="#" className="text-slate-400 hover:text-white transition-colors">GitHub</a></li>
@@ -59,22 +61,22 @@ export default function Footer(){
 
           <div className="md:col-span-3">
              <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Newsletter</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">{t('newsletter')}</p>
                 <div className="flex flex-col gap-2">
                    <input type="email" placeholder="Email Address" className="bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-[10px] focus:border-primary outline-none transition-all" />
-                   <button className="bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest py-3 rounded-xl hover:bg-primary hover:text-white transition-all">Subscribe</button>
+                   <button className="bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest py-3 rounded-xl hover:bg-primary hover:text-white transition-all">{t('subscribe')}</button>
                 </div>
              </div>
           </div>
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-black uppercase tracking-widest text-slate-500">
-          <p>© {year} Eleviq Technologies. All rights reserved.</p>
+          <p>© {year} Eleviq Technologies. {t('all_rights')}</p>
           <div className="flex gap-8">
-             <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
-             <Link to="/terms" className="hover:text-white">Terms of Service</Link>
+             <Link to="/privacy" className="hover:text-white">{t('privacy')}</Link>
+             <Link to="/terms" className="hover:text-white">{t('terms')}</Link>
           </div>
-          <p className="flex items-center gap-2">Handcrafted in Nairobi <span className="text-sm">🇰🇪</span></p>
+          <p className="flex items-center gap-2">{t('handcrafted')} <span className="text-sm">🇰🇪</span></p>
         </div>
       </div>
     </footer>

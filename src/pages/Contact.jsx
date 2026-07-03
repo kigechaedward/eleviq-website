@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useTranslation } from '../utils/i18n'
 
 export default function Contact(){
+  const { t } = useTranslation()
   const [status, setStatus] = useState(null)
   const endpoint = import.meta.env.VITE_FORM_ENDPOINT
 
@@ -39,31 +41,31 @@ export default function Contact(){
           {/* Left Column: Info */}
           <div className="reveal-on-scroll">
             <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none">
-              Initiate <br/> <span className="text-primary">Contact</span>
+              {t('initiate_contact')} <br/> <span className="text-primary">{t('contact_span')}</span>
             </h1>
             <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 max-w-md leading-relaxed">
-              Have a high-stakes project in mind? We're ready to engineer your evolution.
+              {t('contact_desc')}
             </p>
 
             <div className="space-y-8">
               <div className="flex gap-6 items-start">
                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-xl">📍</div>
                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">HQ Location</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">{t('hq_location')}</h4>
                     <p className="text-slate-500 dark:text-slate-400 font-medium">Nairobi, Kenya</p>
                  </div>
               </div>
               <div className="flex gap-6 items-start">
                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-xl">📧</div>
                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">Direct Transmission</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">{t('direct_transmission')}</h4>
                     <a href="mailto:info@eleviqtechnologies.net" className="text-slate-500 dark:text-slate-400 font-medium hover:text-primary transition-colors">info@eleviqtechnologies.net</a>
                  </div>
               </div>
               <div className="flex gap-6 items-start">
                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-xl">📞</div>
                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">Voice Line</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-widest text-xs mb-1">{t('voice_line')}</h4>
                     <p className="text-slate-500 dark:text-slate-400 font-medium">+254 790 683 823</p>
                  </div>
               </div>
@@ -78,37 +80,37 @@ export default function Contact(){
               <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('full_name')}</label>
                     <input name="name" required placeholder="John Doe" className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('email_address')}</label>
                     <input name="email" type="email" required placeholder="john@company.com" className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone (Optional)</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('phone_optional')}</label>
                   <input name="phone" placeholder="+254..." className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Message Brief</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('message_brief')}</label>
                   <textarea name="message" rows="5" required placeholder="Tell us about your project..." className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
                 </div>
 
                 <button type="submit" disabled={status === 'sending'} className="w-full py-5 bg-primary text-slate-900 font-black uppercase tracking-[0.2em] rounded-2xl hover:shadow-cyan-glow transition-all active:scale-[0.98] disabled:opacity-50">
-                  {status === 'sending' ? 'Transmitting...' : 'Send Transmission'}
+                  {status === 'sending' ? t('transmitting') : t('send_contact')}
                 </button>
 
                 {status === 'sent' && (
                   <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-600 dark:text-green-400 text-xs font-bold text-center animate-pulse">
-                    Transmission Successful. Our team will respond shortly.
+                    {t('success_msg')}
                   </div>
                 )}
                 {status === 'error' && (
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-600 dark:text-red-400 text-xs font-bold text-center">
-                    Connection Error. Please retry or email directly.
+                    {t('error_msg')}
                   </div>
                 )}
               </form>

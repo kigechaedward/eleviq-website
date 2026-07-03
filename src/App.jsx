@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { initScrollReveal } from './utils/scrollReveal'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -10,6 +11,13 @@ import Footer from './components/Footer'
 
 export default function App(){
   const location = useLocation()
+
+  useEffect(() => {
+    // Initialize UI/UX Pro Max Scroll Animations
+    const cleanup = initScrollReveal()
+    return () => cleanup()
+  }, [location.pathname]) // Re-run when switching pages
+
   useEffect(()=>{
     // Basic SEO: update document title per route
     const titleMap = {

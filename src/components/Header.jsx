@@ -5,12 +5,18 @@ import { useTranslation, LANGUAGES } from '../utils/i18n'
 export default function Header(){
   const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
   const [langOpen, setLangOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const { t, lang, changeLanguage } = useTranslation()
   const location = useLocation()
 
   useEffect(()=>{
     document.documentElement.classList.toggle('dark', dark)
   },[dark])
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location])
 
   const nav = [
     {to:'/', label: t('home')},
@@ -35,6 +41,7 @@ export default function Header(){
           </div>
         </Link>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 items-center bg-slate-100/50 dark:bg-slate-800/50 px-6 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
           {nav.map(item=> (
             <Link key={item.to} to={item.to} className={`text-[10px] font-black uppercase tracking-wider transition-all duration-pro-fast ${location.pathname===item.to? 'text-primary':'text-slate-500 dark:text-slate-400 hover:text-primary'}`}>
@@ -61,7 +68,7 @@ export default function Header(){
                     onClick={() => {
                       changeLanguage(l.code);
                       setLangOpen(false);
-                      window.location.reload(); // Force reload to apply translations globally
+                      window.location.reload();
                     }}
                     className={`w-full px-4 py-2 flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors ${lang === l.code ? 'text-primary' : 'text-slate-600 dark:text-slate-400'}`}
                   >
@@ -73,14 +80,59 @@ export default function Header(){
             )}
           </div>
 
+          {/* Dark Mode Toggle */}
           <button aria-label="Toggle dark mode" onClick={()=>setDark(d=>!d)} className="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-soft hover:shadow-soft-hover transition-all">
             {dark? '☀️' : '🌙'}
           </button>
 
-          <Link to="/contact" className="hidden sm:block text-[10px] uppercase tracking-widest px-6 py-3 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 rounded-xl font-black hover:shadow-cyan-glow transition-all active:scale-95">
+          {/* Hire Us Button (Desktop) */}
+          <Link to="/contact" className="hidden md:block text-[10px] uppercase tracking-widest px-6 py-3 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 rounded-xl font-black hover:shadow-cyan-glow transition-all active:scale-95">
             {t('hire_us')}
           </Link>
+
+          {/* Mobile Burger Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden w-10 h-10 rounded-xl bg-slate-900 dark:bg-primary text-white dark:text-slate-900 flex flex-col items-center justify-center gap-1.5 shadow-soft active:scale-90 transition-all"
+            aria-label="Toggle Menu"
+          >
+            <span className={`w-5 h-0.5 bg-current transition-all duration-pro-base ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-5 h-0.5 bg-current transition-all duration-pro-base ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-5 h-0.5 bg-current transition-all duration-pro-base ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
         </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-pro-base ease-pro-max ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onClick={() => setMenuOpen(false)}></div>
+        <nav className={`absolute top-0 right-0 h-full w-72 bg-white dark:bg-slate-900 shadow-2xl transition-transform duration-pro-base ease-pro-max ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="p-8 flex flex-col h-full">
+            <div className="flex items-center justify-between mb-12">
+              <span className="text-xs font-black uppercase tracking-widest text-primary">{t('navigation')}</span>
+              <button onClick={() => setMenuOpen(false)} className="text-slate-400 hover:text-primary transition-colors">✕</button>
+            </div>
+
+            <ul className="space-y-6">
+              {nav.map(item => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className={`text-2xl font-black tracking-tighter hover:text-primary transition-colors ${location.pathname === item.to ? 'text-primary' : 'text-slate-900 dark:text-white'}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800">
+               <Link to="/contact" className="block w-full text-center py-4 bg-primary text-slate-900 text-xs font-black uppercase tracking-widest rounded-2xl shadow-soft">
+                 {t('hire_us')}
+               </Link>
+            </div>
+          </div>
+        </nav>
       </div>
     </header>
   )

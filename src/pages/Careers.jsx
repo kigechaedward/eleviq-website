@@ -25,12 +25,12 @@ export default function Careers() {
 
         <div className="space-y-4">
           <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 reveal-on-scroll">{t('open_positions')}</h2>
-          {positions.map((job, i) => (
+          {[0, 1, 2, 3].map((i) => (
             <div key={i} className="reveal-on-scroll pro-card p-8 flex flex-col md:flex-row md:items-center justify-between group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
               <div>
-                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">{job.dept}</p>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">{job.title}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{job.type}</p>
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">{t(`job${i}_d`)}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">{t(`job${i}_t`)}</h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{t(`job${i}_ty`)}</p>
               </div>
               <div className="mt-6 md:mt-0">
                 <Link to="/contact" className="px-6 py-3 bg-slate-900 dark:bg-slate-800 text-white text-xs font-black uppercase tracking-widest rounded-xl group-hover:bg-primary transition-all">

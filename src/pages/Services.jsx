@@ -15,29 +15,26 @@ export default function Services(){
 
         <div className="grid md:grid-cols-3 gap-8">
           {SERVICES.map((service, i) => (
-            <div key={service.title}
+            <div key={i}
                  className="reveal-on-scroll pro-card p-10 group"
                  style={{ transitionDelay: `${i * 100}ms` }}>
               <div className="w-14 h-14 mb-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl flex items-center justify-center text-3xl group-hover:bg-primary group-hover:text-white transition-all">
                 {['⚡', '🌐', '📱', '🤖', '💡', '☁️', '📊', '🔍', '🛍️'][i] || '⚙️'}
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">{service.title}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{service.desc}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">{t(`s${i}_t`)}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{t(`s${i}_d`)}</p>
             </div>
           ))}
         </div>
 
         {/* FAQ Section */}
         <div className="mt-32 reveal-on-scroll">
-          <h2 className="text-3xl font-bold mb-12 tracking-tight">Technical FAQ</h2>
+          <h2 className="text-3xl font-bold mb-12 tracking-tight">{t('faq_title')}</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { q: "How long does a typical project take?", a: "Depends on scope; small sites in 2–6 weeks, larger platforms 3–6+ months." },
-              { q: "Do you provide maintenance?", a: "Yes — SLA-based support and managed services are available." }
-            ].map((faq, i) => (
+            {[0, 1].map((i) => (
               <div key={i} className="p-8 pro-card">
-                 <h4 className="font-bold text-slate-900 dark:text-white mb-3">{faq.q}</h4>
-                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{faq.a}</p>
+                 <h4 className="font-bold text-slate-900 dark:text-white mb-3">{t(`q${i}`)}</h4>
+                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{t(`a${i}`)}</p>
               </div>
             ))}
           </div>

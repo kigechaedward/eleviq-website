@@ -148,11 +148,27 @@ export const LANGUAGES = [
 ];
 
 export function useTranslation() {
-  const [lang, setLang] = useState(localStorage.getItem('eleviq_lang') || 'en');
+  const getBrowserLang = () => {
+    const navLang = navigator.language.split('-')[0];
+    const supported = LANGUAGES.map(l => l.code);
+    return supported.includes(navLang) ? navLang : 'en';
+  };
+
+  const [lang, setLang] = useState(localStorage.getItem('eleviq_lang') || getBrowserLang());
+
+  useEffect(() => {
+    // Sync localStorage if it's the first time (auto-detected)
+    if (!localStorage.getItem('eleviq_lang')) {
+      localStorage.setItem('eleviq_lang', lang);
+    }
+  }, [lang]);
+
   const t = (key) => translations[lang]?.[key] || translations['en']?.[key] || key;
+
   const changeLanguage = (newLang) => {
     setLang(newLang);
     localStorage.setItem('eleviq_lang', newLang);
   };
+
   return { t, lang, changeLanguage };
 }

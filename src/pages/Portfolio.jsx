@@ -1,39 +1,75 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { PROJECTS } from '../data/projects'
 import { useTranslation } from '../utils/i18n'
 
 export default function Portfolio(){
   const { t } = useTranslation()
 
-  return (
-    <div className="pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="reveal-on-scroll mb-20 text-center">
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">{t('portfolio')}</h1>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{t('artifacts_desc')}</p>
-        </div>
+  const projectImages = [
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1586864387917-f5da179679f2?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1596495573105-d1f6a9d1617b?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1554224155-169641357599?auto=format&fit=crop&q=80&w=800'
+  ]
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {PROJECTS.map((p, i) => (
-            <article key={i}
-                     className="reveal-on-scroll pro-card p-10 group"
-                     style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="flex items-start justify-between mb-8">
-                <span className="text-[10px] font-black uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">{p.type}</span>
-                <span className="text-slate-300 dark:text-slate-700 font-bold text-xs italic">#00{i+1}</span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">{t(`p${i}_n`)}</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">{t(`p${i}_d`)}</p>
-              <Link to="/contact" className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white group-hover:text-primary flex items-center gap-2">
-                {t('deep_dive')} <span>→</span>
-              </Link>
-            </article>
-          ))}
+  return (
+    <div className="bg-slate-50 dark:bg-slate-950/50 min-h-screen">
+      {/* Header */}
+      <section className="pt-40 pb-20 px-6 text-center">
+        <div className="max-w-4xl mx-auto reveal-on-scroll">
+          <h1 className="font-heading text-5xl md:text-7xl font-bold uppercase mb-6 text-slate-900 dark:text-white">{t('portfolio')}</h1>
+          <p className="font-script text-2xl text-primary mb-8 italic">{t('artifacts_desc').split('.')[0]}</p>
         </div>
-      </div>
+      </section>
+
+      {/* Grid - Agency Style */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {PROJECTS.map((p, i) => (
+              <div key={i} className="reveal-on-scroll group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
+                {/* Image Container with Hover Overlay */}
+                <div className="relative overflow-hidden rounded-t-lg aspect-[4/3] bg-slate-900">
+                  <img
+                    src={projectImages[i]}
+                    alt={t(`p${i}_n`)}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-pro-base"
+                  />
+                  {/* Agency Hover Overlay */}
+                  <div className="absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-pro-base">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-5xl font-light">
+                      +
+                    </div>
+                  </div>
+                </div>
+
+                {/* Info Container */}
+                <div className="bg-white dark:bg-slate-900 p-8 text-center rounded-b-lg shadow-sm border border-slate-100 dark:border-slate-800">
+                  <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors">
+                    {t(`p${i}_n`)}
+                  </h3>
+                  <p className="text-slate-500 dark:text-slate-400 font-medium italic">
+                    {p.type}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 px-6 text-center">
+        <div className="reveal-on-scroll">
+           <h3 className="font-heading text-3xl font-bold uppercase mb-8 text-slate-900 dark:text-white">Interested in working with us?</h3>
+           <Link to="/contact" className="inline-block px-10 py-5 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 font-heading font-bold uppercase tracking-widest rounded-lg transition-all active:scale-95">
+              Start Conversation
+           </Link>
+        </div>
+      </section>
     </div>
   )
 }
-
-// Ensure Link is imported
-import { Link } from 'react-router-dom'

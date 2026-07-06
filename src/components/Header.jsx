@@ -42,9 +42,9 @@ export default function Header(){
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8 items-center bg-slate-100/50 dark:bg-slate-800/50 px-6 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
+        <nav className="hidden md:flex gap-8 items-center bg-slate-900/10 dark:bg-slate-800/10 px-6 py-2 rounded-full backdrop-blur-sm">
           {nav.map(item=> (
-            <Link key={item.to} to={item.to} className={`text-[10px] font-black uppercase tracking-wider transition-all duration-pro-fast ${location.pathname===item.to? 'text-primary':'text-slate-500 dark:text-slate-400 hover:text-primary'}`}>
+            <Link key={item.to} to={item.to} className={`font-heading text-xs font-bold uppercase tracking-widest transition-all duration-pro-fast ${location.pathname===item.to? 'text-primary':'text-slate-700 dark:text-slate-300 hover:text-primary'}`}>
               {item.label}
             </Link>
           ))}

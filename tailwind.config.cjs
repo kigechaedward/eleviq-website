@@ -23,7 +23,9 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace']
+        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+        heading: ['Montserrat', 'serif'],
+        script: ['Kaushan Script', 'cursive']
       },
       fontSize: {
         h1: 'clamp(2rem, 6vw, 4rem)',

@@ -4,17 +4,17 @@ import { useTranslation } from '../utils/i18n'
 export default function Team() {
   const { t } = useTranslation()
   const members = [
-    { name: 'Edward Kigecha', role: 'Chief Engineer' },
-    { name: 'Jane Mwangi', role: 'Lead Architect' },
-    { name: 'Samuel Otieno', role: 'Head of AI' }
+    { name: 'Edward Kigecha', role: t('role_ce') },
+    { name: 'Jane Mwangi', role: t('role_la') },
+    { name: 'Samuel Otieno', role: t('role_ha') }
   ]
 
   return (
     <section className="py-32 px-6 bg-white dark:bg-slate-900 text-center overflow-hidden border-t border-slate-100 dark:border-slate-800">
       <div className="max-w-7xl mx-auto">
         <div className="reveal-on-scroll mb-20">
-          <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase mb-4 text-slate-900 dark:text-white">Our Amazing Team</h2>
-          <p className="font-script text-2xl text-primary italic">Precision minds at work</p>
+          <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase mb-4 text-slate-900 dark:text-white">{t('team_title')}</h2>
+          <p className="font-script text-2xl text-primary italic">{t('team_tagline')}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-16">
@@ -43,7 +43,7 @@ export default function Team() {
 
         <div className="mt-20 max-w-2xl mx-auto reveal-on-scroll">
            <p className="text-slate-500 leading-relaxed italic">
-             Our team is dedicated to engineering excellence, combining years of experience in high-stakes environments with a passion for future-forward technology.
+             {t('team_desc')}
            </p>
         </div>
       </div>

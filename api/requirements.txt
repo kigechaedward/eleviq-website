@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+crewai
+langchain_groq
+python-dotenv
+pydantic
+cors

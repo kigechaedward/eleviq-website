@@ -39,7 +39,7 @@ export default function About(){
 
             <div className="flex justify-center">
                <div className="w-40 h-40 rounded-full bg-primary flex items-center justify-center text-center p-6 shadow-cyan-glow reveal-on-scroll">
-                  <p className="font-heading font-bold text-slate-900 uppercase leading-tight text-sm">
+                  <p className="font-heading font-bold text-slate-900 uppercase leading-tight text-[10px]">
                     {t('story_end').split(' ').slice(0,2).join(' ')} <br/> {t('story_end').split(' ').slice(2,3).join(' ')} <br/> {t('story_end').split(' ').slice(3).join(' ')}
                   </p>
                </div>

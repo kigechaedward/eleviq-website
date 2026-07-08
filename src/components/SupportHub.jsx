@@ -54,7 +54,7 @@ export default function SupportHub() {
                    </p>
                  </div>
                  <button onClick={() => setChatStep('greet')} className="text-[10px] font-black uppercase tracking-widest text-primary hover:underline ml-1">
-                   ← Back to questions
+                   ← {t('bot_back')}
                  </button>
               </div>
             )}

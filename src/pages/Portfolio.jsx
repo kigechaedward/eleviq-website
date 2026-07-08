@@ -43,10 +43,10 @@ export default function Portfolio(){
                 </div>
 
                 <div className="bg-white dark:bg-slate-900 p-8 text-center rounded-b-lg shadow-sm border border-slate-100 dark:border-slate-800">
-                  <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors tracking-tighter">
                     {t(`p${i}_n`)}
                   </h3>
-                  <p className="text-slate-500 dark:text-slate-400 font-medium italic">
+                  <p className="text-slate-500 dark:text-slate-400 font-medium italic text-xs uppercase tracking-widest">
                     {p.type}
                   </p>
                 </div>
@@ -59,7 +59,7 @@ export default function Portfolio(){
       <section className="py-32 px-6 text-center">
         <div className="reveal-on-scroll">
            <h3 className="font-heading text-3xl font-bold uppercase mb-8 text-slate-900 dark:text-white">{t('portfolio_cta')}</h3>
-           <Link to="/contact" className="inline-block px-10 py-5 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 font-heading font-bold uppercase tracking-widest rounded-lg transition-all active:scale-95">
+           <Link to="/contact" className="inline-block px-10 py-5 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 font-heading font-bold uppercase tracking-[0.2em] text-[10px] rounded-lg transition-all active:scale-95 shadow-lg">
               {t('start_conv')}
            </Link>
         </div>

@@ -19,4 +19,10 @@ SEO & Accessibility:
 Customization:
 - Update colors in tailwind.config.cjs, replace placeholder projects, and add case studies in src/data.
 
+AI Agents (Backend):
+- The project includes a `api/` directory with a FastAPI + CrewAI implementation.
+- This allows you to run a team of autonomous AI agents (Analyst + Architect) to generate project strategies.
+- Requirements: Python 3.10+, Groq API Key.
+- Setup: `cd api && pip install -r requirements.txt`, then `python main.py`.
+
 License: MIT

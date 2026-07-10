@@ -17,6 +17,7 @@ export default function Header(){
     {to:'/about', label: t('about')},
     {to:'/services', label: t('services')},
     {to:'/portfolio', label: t('portfolio')},
+    {to:'/ai-dashboard', label: 'AI Agents'},
     {to:'/contact', label: t('contact')}
   ]
 

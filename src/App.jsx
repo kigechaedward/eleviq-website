@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Careers from './pages/Careers'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import AIDashboard from './pages/AIDashboard'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import SupportHub from './components/SupportHub'
@@ -32,7 +33,8 @@ export default function App(){
       '/contact': 'Contact — Eleviq Technologies',
       '/careers': 'Careers — Eleviq Technologies',
       '/privacy': 'Privacy Policy — Eleviq Technologies',
-      '/terms': 'Terms of Service — Eleviq Technologies'
+      '/terms': 'Terms of Service — Eleviq Technologies',
+      '/ai-dashboard': 'AI Agent Dashboard — Eleviq Technologies'
     }
     document.title = titleMap[location.pathname] || 'Eleviq Technologies'
     window.scrollTo(0,0)
@@ -51,6 +53,7 @@ export default function App(){
           <Route path="/careers" element={<Careers />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/ai-dashboard" element={<AIDashboard />} />
         </Routes>
       </main>
       <Footer />

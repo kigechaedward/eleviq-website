@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import List, Optional
 from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
 from langchain_groq import ChatGroq
@@ -32,52 +33,84 @@ llm = ChatGroq(
 class AgentRequest(BaseModel):
     client_industry: str
     project_goal: str
+    agents: Optional[List[str]] = ["analyst", "architect"]
+
+# Agent Definitions
+AGENT_CONFIGS = {
+    "analyst": {
+        "role": "Market Strategist",
+        "goal_template": "Analyze the {industry} market for digital gaps and identify ROI opportunities.",
+        "backstory": "You are a senior market analyst at Eleviq Technologies. You specialize in finding high-value digital transformation opportunities across industries. You think in terms of business impact and competitive advantage."
+    },
+    "architect": {
+        "role": "Solutions Architect",
+        "goal_template": "Design a scalable technical solution to achieve: {goal}",
+        "backstory": "You are a principal solutions architect at Eleviq. You transform business requirements into robust, scalable software architectures. You consider scalability, security, cost-effectiveness, and maintainability in every design."
+    },
+    "developer": {
+        "role": "Lead Developer",
+        "goal_template": "Review the technical feasibility and recommend the optimal tech stack for: {goal}",
+        "backstory": "You are a senior full-stack developer with 10+ years of experience. You evaluate technology choices based on team size, timeline, budget, and long-term maintainability. You're pragmatic and ship-focused."
+    },
+    "qa": {
+        "role": "QA Engineer",
+        "goal_template": "Identify quality risks and design a comprehensive testing strategy for: {goal}",
+        "backstory": "You are a quality assurance lead who ensures software reliability. You think about edge cases, performance bottlenecks, security vulnerabilities, and user experience issues before they become production problems."
+    },
+    "devops": {
+        "role": "DevOps Engineer",
+        "goal_template": "Plan the deployment pipeline and infrastructure for: {goal}",
+        "backstory": "You are a DevOps specialist who designs CI/CD pipelines, cloud infrastructure, and monitoring systems. You focus on reliability, cost optimization, and deployment speed."
+    }
+}
 
 @app.get("/")
 async def root():
-    return {"status": "Eleviq AI Agents Online"}
+    return {"status": "Eleviq AI Agents Online", "agents": list(AGENT_CONFIGS.keys())}
 
 @app.post("/kickoff-agent-team")
 async def kickoff_team(request: AgentRequest):
     if not os.getenv("GROQ_API_KEY"):
         raise HTTPException(status_code=500, detail="GROQ_API_KEY not found in environment")
 
+    # Validate requested agents
+    invalid_agents = [a for a in request.agents if a not in AGENT_CONFIGS]
+    if invalid_agents:
+        raise HTTPException(status_code=400, detail=f"Invalid agents: {invalid_agents}. Available: {list(AGENT_CONFIGS.keys())}")
+
     try:
-        # 1. Define Agents
-        analyst = Agent(
-            role='Market Strategist',
-            goal=f'Analyze the {request.client_industry} market for digital gaps.',
-            backstory='You are a senior analyst at Eleviq. You find ROI opportunities in tech.',
-            llm=llm,
-            verbose=True
-        )
+        # Create agents based on request
+        agents = []
+        tasks = []
+        
+        for agent_id in request.agents:
+            config = AGENT_CONFIGS[agent_id]
+            
+            # Create agent with industry/goal context
+            agent = Agent(
+                role=config["role"],
+                goal=config["goal_template"].format(
+                    industry=request.client_industry,
+                    goal=request.project_goal
+                ),
+                backstory=config["backstory"],
+                llm=llm,
+                verbose=True
+            )
+            agents.append(agent)
+            
+            # Create task for this agent
+            task = Task(
+                description=f"As the {config['role']}, analyze and provide recommendations for a {request.client_industry} project: {request.project_goal}",
+                expected_output=f"A detailed analysis from the {config['role']} perspective with actionable recommendations.",
+                agent=agent
+            )
+            tasks.append(task)
 
-        architect = Agent(
-            role='Solutions Architect',
-            goal=f'Design a technical solution to achieve: {request.project_goal}',
-            backstory='You convert business goals into scalable software architecture.',
-            llm=llm,
-            verbose=True
-        )
-
-        # 2. Define Tasks
-        task1 = Task(
-            description=f'Identify 3 key technical trends in {request.client_industry}.',
-            expected_output='A bulleted list of 3 trends with business impact.',
-            agent=analyst
-        )
-
-        task2 = Task(
-            description=f'Based on the trends, propose a high-level technical architecture for {request.project_goal}.',
-            expected_output='A professional technical summary for the Eleviq portfolio.',
-            agent=architect,
-            context=[task1]
-        )
-
-        # 3. Create and Run Crew
+        # Create and Run Crew
         crew = Crew(
-            agents=[analyst, architect],
-            tasks=[task1, task2],
+            agents=agents,
+            tasks=tasks,
             process=Process.sequential,
             verbose=True
         )
@@ -86,11 +119,26 @@ async def kickoff_team(request: AgentRequest):
 
         return {
             "success": True,
-            "agent_output": str(result)
+            "agent_output": str(result),
+            "agents_used": request.agents
         }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/agents")
+async def list_agents():
+    """List all available agent types"""
+    return {
+        "agents": [
+            {
+                "id": agent_id,
+                "name": config["role"],
+                "description": config["backstory"][:100] + "..."
+            }
+            for agent_id, config in AGENT_CONFIGS.items()
+        ]
+    }
 
 if __name__ == "__main__":
     import uvicorn

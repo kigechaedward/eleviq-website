@@ -4,11 +4,37 @@ import { useTranslation } from '../utils/i18n'
 export default function Contact(){
   const { t } = useTranslation()
   const [status, setStatus] = useState(null)
+  const [errors, setErrors] = useState({})
   const endpoint = import.meta.env.VITE_FORM_ENDPOINT
+
+  const validateForm = (form) => {
+    const newErrors = {}
+    const name = form.get('name')?.trim()
+    const email = form.get('email')?.trim()
+    const message = form.get('message')?.trim()
+
+    if (!name || name.length < 2) {
+      newErrors.name = 'Name must be at least 2 characters'
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+
+    if (!message || message.length < 10) {
+      newErrors.message = 'Message must be at least 10 characters'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   async function handleSubmit(e){
     e.preventDefault()
     const form = new FormData(e.target)
+
+    if (!validateForm(form)) return
+
     const payload = Object.fromEntries(form)
 
     if(endpoint){
@@ -22,6 +48,7 @@ export default function Contact(){
         if(res.ok) {
           setStatus('sent')
           e.target.reset()
+          setErrors({})
         }
         else setStatus('error')
       }catch(err){
@@ -29,7 +56,7 @@ export default function Contact(){
       }
     } else {
       const subject = encodeURIComponent('Inquiry: ' + payload.name)
-      const body = encodeURIComponent(`${payload.message}\n\nPhone: ${payload.phone}\nEmail: ${payload.email}`)
+      const body = encodeURIComponent(`${payload.message}\n\nPhone: ${payload.phone || 'Not provided'}\nEmail: ${payload.email}`)
       window.location.href = `mailto:info@eleviqtechnologies.net?subject=${subject}&body=${body}`
     }
   }
@@ -77,15 +104,32 @@ export default function Contact(){
             <div className="pro-card p-10 md:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
 
-              <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+              <form onSubmit={handleSubmit} className="relative z-10 space-y-6" noValidate>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('full_name')}</label>
-                    <input name="name" required placeholder="John Doe" className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
+                    <input 
+                      name="name" 
+                      required 
+                      placeholder="John Doe" 
+                      className={`w-full bg-slate-50 dark:bg-slate-800/50 border rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all ${
+                        errors.name ? 'border-red-500' : 'border-slate-200/50 dark:border-slate-700/50'
+                      }`}
+                    />
+                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('email_address')}</label>
-                    <input name="email" type="email" required placeholder="john@company.com" className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
+                    <input 
+                      name="email" 
+                      type="email" 
+                      required 
+                      placeholder="john@company.com" 
+                      className={`w-full bg-slate-50 dark:bg-slate-800/50 border rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all ${
+                        errors.email ? 'border-red-500' : 'border-slate-200/50 dark:border-slate-700/50'
+                      }`}
+                    />
+                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -96,7 +140,16 @@ export default function Contact(){
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{t('message_brief')}</label>
-                  <textarea name="message" rows="5" required placeholder="Tell us about your project..." className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all" />
+                  <textarea 
+                    name="message" 
+                    rows="5" 
+                    required 
+                    placeholder="Tell us about your project..." 
+                    className={`w-full bg-slate-50 dark:bg-slate-800/50 border rounded-xl px-4 py-4 text-sm focus:border-primary outline-none transition-all ${
+                      errors.message ? 'border-red-500' : 'border-slate-200/50 dark:border-slate-700/50'
+                    }`}
+                  />
+                  {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
 
                 <button type="submit" disabled={status === 'sending'} className="w-full py-5 bg-primary text-slate-900 font-black uppercase tracking-[0.2em] rounded-2xl hover:shadow-cyan-glow transition-all active:scale-[0.98] disabled:opacity-50">

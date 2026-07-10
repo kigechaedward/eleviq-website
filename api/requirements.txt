@@ -4,4 +4,4 @@ crewai
 langchain_groq
 python-dotenv
 pydantic
-cors
+httpx

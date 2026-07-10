@@ -13,6 +13,7 @@ import AIDashboard from './pages/AIDashboard'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import SupportHub from './components/SupportHub'
+import ChatWidget from './components/ChatWidget'
 
 export default function App(){
   const location = useLocation()
@@ -58,6 +59,7 @@ export default function App(){
       </main>
       <Footer />
       <SupportHub />
+      <ChatWidget />
     </div>
   )
 }

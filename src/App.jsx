@@ -14,6 +14,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import SupportHub from './components/SupportHub'
 import ChatWidget from './components/ChatWidget'
+import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App(){
   const location = useLocation()
@@ -60,6 +61,7 @@ export default function App(){
       <Footer />
       <SupportHub />
       <ChatWidget />
+      <WhatsAppButton />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
 crewai
 langchain_groq
 python-dotenv

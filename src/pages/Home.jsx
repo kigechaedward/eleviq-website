@@ -27,8 +27,8 @@ export default function Home(){
                 <div className="w-40 h-40 rounded-full bg-primary flex items-center justify-center text-5xl text-white mx-auto mb-8 shadow-cyan-glow group hover:scale-110 transition-transform">
                    {['⚡', '🌐', '📱'][i]}
                 </div>
-                <h3 className="font-heading font-bold text-2xl mb-4 text-slate-900 dark:text-white uppercase">{t(`s${i}_t`)}</h3>
-                <p className="text-slate-500 leading-relaxed max-w-sm mx-auto">{t(`s${i}_d`)}</p>
+                <h3 className="font-heading font-bold text-2xl mb-4 text-slate-900 dark:text-white uppercase">{s.title}</h3>
+                <p className="text-slate-500 leading-relaxed max-w-sm mx-auto">{s.desc}</p>
               </div>
             ))}
           </div>

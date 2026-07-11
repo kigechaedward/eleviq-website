@@ -32,7 +32,7 @@ export default function Portfolio(){
                 <div className="relative overflow-hidden rounded-t-lg aspect-[4/3] bg-slate-900">
                   <img
                     src={projectImages[i]}
-                    alt={t(`p${i}_n`)}
+                    alt={p.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-pro-base"
                   />
                   <div className="absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-pro-base">
@@ -44,7 +44,7 @@ export default function Portfolio(){
 
                 <div className="bg-white dark:bg-slate-900 p-8 text-center rounded-b-lg shadow-sm border border-slate-100 dark:border-slate-800">
                   <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors tracking-tighter">
-                    {t(`p${i}_n`)}
+                    {p.name}
                   </h3>
                   <p className="text-slate-500 dark:text-slate-400 font-medium italic text-xs uppercase tracking-widest">
                     {p.type}

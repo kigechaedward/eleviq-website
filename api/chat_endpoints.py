@@ -1,7 +1,7 @@
 import os
 import hashlib
 import hmac
-from fastapi import FastAPI, HTTPException, Request, Header
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
@@ -27,10 +27,6 @@ class ChatRequest(BaseModel):
     message: str
     user_name: Optional[str] = None
     user_email: Optional[str] = None
-
-class WhatsAppMessage(BaseModel):
-    object: str
-    entry: list
 
 # Website Chat Endpoint
 @app.post("/chat")
@@ -65,9 +61,9 @@ async def get_session(session_id: str):
 # WhatsApp Webhook Verification (Meta requires this)
 @app.get("/whatsapp/webhook")
 async def verify_whatsapp_webhook(
-    hub_mode: str = Header(None),
-    hub_verify_token: str = Header(None),
-    hub_challenge: str = Header(None)
+    hub_mode: str = "",
+    hub_verify_token: str = "",
+    hub_challenge: str = ""
 ):
     verify_token = os.getenv("WHATSAPP_VERIFY_TOKEN")
     
@@ -77,13 +73,24 @@ async def verify_whatsapp_webhook(
 
 # WhatsApp Message Handler
 @app.post("/whatsapp/webhook")
-async def handle_whatsapp_message(message: WhatsAppMessage):
-    if not os.getenv("GROQ_API_KEY"):
-        raise HTTPException(status_code=500, detail="GROQ_API_KEY not configured")
+async def handle_whatsapp_message(request: Request):
+    body = await request.body()
+
+    # Validate signature for security
+    signature = request.headers.get("X-Hub-Signature-256")
+    app_secret = os.getenv("WHATSAPP_APP_SECRET")
+    if app_secret and signature:
+        expected = "sha256=" + hmac.new(
+            app_secret.encode(), body, hashlib.sha256
+        ).hexdigest()
+        if not hmac.compare_digest(expected, signature):
+            raise HTTPException(status_code=403, detail="Invalid signature")
 
     try:
+        data = await request.json()
+        
         # Extract message data from Meta's format
-        for entry in message.entry:
+        for entry in data.get("entry", []):
             for change in entry.get("changes", []):
                 value = change.get("value", {})
                 messages = value.get("messages", [])
@@ -96,14 +103,13 @@ async def handle_whatsapp_message(message: WhatsAppMessage):
                         # Use phone number as session ID for WhatsApp
                         session_id = f"whatsapp_{phone}"
                         response = chat_agent.chat(session_id, text)
-                        
-                        # Here you would send the response back via WhatsApp API
-                        # This requires the WhatsApp Business API token
                         await send_whatsapp_message(phone, response)
 
+        # Always return 200 quickly — Meta retries on failure
         return {"status": "ok"}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"Webhook error: {e}")
+        return {"status": "ok"}
 
 async def send_whatsapp_message(phone: str, message: str):
     """Send message via WhatsApp Business API"""

@@ -18,6 +18,7 @@ const translations = {
     transmitting: "Transmitting...", send_contact: "Send Transmission", success_msg: "Transmission Successful.", error_msg: "Connection Error.",
     footer_desc: "Evolving with Technology. We build high-performance digital ecosystems.", all_rights: "All rights reserved.", handcrafted: "Handcrafted in Nairobi",
     join_evolution: "Join the Evolution", careers_desc: "We're looking for high-performance individuals.", open_positions: "Open Positions", apply_now: "Apply Now", dont_see_fit: "Don't see a fit?", exceptional_talent: "We're always looking for exceptional talent.",
+    faq_title: "Frequently Asked Questions", q0: "What services do you offer?", a0: "We specialize in Custom Software, AI, and Cloud solutions tailored to your business needs.", q1: "How long does a typical project take?", a1: "Timelines vary, but most projects run 4-12 weeks from discovery to deployment.",
     whatsapp_chat: "Chat with us", bot_greeting: "Hello! I'm Eleviq's AI Assistant.", bot_select_q: "Select a question:", bot_faq_q1: "What services do you offer?", bot_faq_a1: "We specialize in Custom Software, AI, and Cloud.", bot_connect_human: "Talk to a human", bot_back: "Back to questions", bot_close: "Close"
   },
   sw: {

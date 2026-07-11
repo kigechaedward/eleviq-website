@@ -14,15 +14,15 @@ export default function Services(){
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {SERVICES.map((_, i) => (
+          {SERVICES.map((service, i) => (
             <div key={i}
                  className="reveal-on-scroll pro-card p-10 group"
                  style={{ transitionDelay: `${i * 100}ms` }}>
               <div className="w-14 h-14 mb-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl flex items-center justify-center text-3xl group-hover:bg-primary group-hover:text-white transition-all">
                 {['⚡', '🌐', '📱', '🤖', '💡', '☁️', '📊', '🔍', '🛍️'][i] || '⚙️'}
               </div>
-              <h3 className="font-heading font-bold text-xl mb-4 text-slate-900 dark:text-white uppercase">{t(`s${i}_t`)}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{t(`s${i}_d`)}</p>
+              <h3 className="font-heading font-bold text-xl mb-4 text-slate-900 dark:text-white uppercase">{service.title}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{service.desc}</p>
             </div>
           ))}
         </div>

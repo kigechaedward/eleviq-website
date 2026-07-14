@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 md:bottom-8 z-[60] group flex items-center gap-3 active:scale-95 transition-all duration-pro-base"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] group flex items-center gap-3 active:scale-95 transition-all duration-pro-base"
       aria-label="Chat on WhatsApp"
     >
       {/* Tooltip - Hidden on mobile, shown on desktop right-aligned */}

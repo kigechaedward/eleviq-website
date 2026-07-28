@@ -1,3 +1,1 @@
-# Ads.txt for Eleviq - https://kigechaedward.github.io/eleviq-website/
-# See https://iabtechlab.com/ads-txt for spec
 google.com, pub-7568116810884123, DIRECT, f08c47fec0942fa0

@@ -46,6 +46,7 @@ export default function Footer(){
               <li><a href="#" className="text-slate-400 hover:text-white transition-colors">{t('blog')}</a></li>
               <li><Link to="/careers" className="text-slate-400 hover:text-white transition-colors">{t('careers')}</Link></li>
               <li><Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">{t('privacy')}</Link></li>
+              <li><Link to="/privacy-myhobbyplan" className="text-slate-400 hover:text-white transition-colors">MyHobbyPlan Privacy</Link></li>
               <li><Link to="/terms" className="text-slate-400 hover:text-white transition-colors">{t('terms')}</Link></li>
             </ul>
           </div>
@@ -74,6 +75,7 @@ export default function Footer(){
           <p>© {year} Eleviq Technologies. {t('all_rights')}</p>
           <div className="flex gap-8">
              <Link to="/privacy" className="hover:text-white">{t('privacy')}</Link>
+             <Link to="/privacy-myhobbyplan" className="hover:text-white">MyHobbyPlan Privacy</Link>
              <Link to="/terms" className="hover:text-white">{t('terms')}</Link>
           </div>
           <p className="flex items-center gap-2">{t('handcrafted')} <span className="text-sm">🇰🇪</span></p>

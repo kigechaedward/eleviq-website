@@ -28,7 +28,7 @@
 
 ## Changes Made (2026-07-22)
 - Created `public/app-ads.txt` with Google AdMob entry
-  - Format: IAB Tech Lab spec
+- Updated `public/app-ads.txt` (2026-07-28) - removed comments, kept exact required content
   - Content: `google.com, pub-7568116810884123, DIRECT, f08c47fec0942fa0`
   - Deployed to: https://kigechaedward.github.io/eleviq-website/app-ads.txt
 

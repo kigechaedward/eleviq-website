@@ -7,7 +7,7 @@ const translations = {
     capabilities: "Capabilities", engineered_for: "Precision Engineered", performance: "Digital Solutions", services_desc: "We bridge the gap between complex engineering and intuitive design.", view_all_services: "Exploration", discuss_project: "Discuss Project", selected_artifacts: "Selected Artifacts", artifacts_desc: "Where high-stakes engineering meets high-end aesthetics.",
     ready_to_evolve: "Ready to Evolve", your_digital_dna: "Your Digital DNA?", cta_desc: "Let's build something extraordinary together. From concept to deployment, we engineer solutions that scale.", initiate_project: "Initiate Project", send_transmission: "Send Transmission",
     flagship: "Flagship", case_study: "Case", deep_dive: "Deep Dive", stack_title: "Technology Stack", process_title: "Our Development Process",
-    role_ce: "Chief Engineer", role_la: "Lead Architect", role_ha: "Head of AI", team_title: "Our Amazing Team", team_tagline: "Precision minds at work", team_desc: "Our team is dedicated to engineering excellence.",
+    role_ce: "Founder & Lead Engineer", role_la: "Lead Architect", role_ha: "Head of AI", team_title: "About Developer", team_tagline: "Visionary Engineering", team_desc: "Edward Kigecha is the driving force behind Eleviq Technologies. A senior software engineer and architect with a passion for building scalable digital ecosystems and AI-powered solutions that solve real-world problems.",
     about_title: "About Eleviq Technologies", about_desc: "Based in Nairobi, Kenya, Eleviq helps organizations adopt modern software.",
     milestone_0_y: "2019-2020", milestone_0_t: "The Genesis", milestone_0_d: "Eleviq was founded in Nairobi.",
     milestone_1_y: "2021", milestone_1_t: "Fintech Breakthrough", milestone_1_d: "We launched our first major platform.",
@@ -28,13 +28,13 @@ const translations = {
     hero_title: "Kukua na", hero_span: "Teknolojia", hero_desc: "Tunaunda programu na suluhisho za AI.",
     about_title: "Kuhusu Eleviq Technologies", about_desc: "Kulingana Nairobi, Kenya, Eleviq husaidia mashirika.",
     milestone_0_t: "Mwanzo", milestone_0_d: "Eleviq ilianzishwa Nairobi.", story_end: "Kuwa Sehemu ya Hadithi Yetu!",
-    team_title: "Timu Yetu", team_tagline: "Akili za usahihi", whatsapp_chat: "Zungumza nasi", bot_greeting: "Habari! Mimi ni msaidizi wa Eleviq.", bot_connect_human: "Ongea na mtu", bot_back: "Rudi kwenye maswali",
+    team_title: "Kuhusu Msanidi Programu", team_tagline: "Visionary Engineering", whatsapp_chat: "Zungumza nasi", bot_greeting: "Habari! Mimi ni msaidizi wa Eleviq.", bot_connect_human: "Ongea na mtu", bot_back: "Rudi kwenye maswali",
     handcrafted: "Imeundwa Nairobi", all_rights: "Haki zote zimehifadhiwa."
   },
   zh: {
     home: "首页", about: "关于", services: "服务", portfolio: "案例", contact: "联系", hire_us: "聘请我们",
     hero_title: "与科技", hero_span: "共进", about_title: "关于 Eleviq Technologies", milestone_0_t: "起源", story_end: "成为我们故事的一部分！",
-    team_title: "我们的团队", whatsapp_chat: "与我们聊天", bot_greeting: "您好！我是 Eleviq 的人工智能助手。", bot_connect_human: "联系人工客服", bot_back: "返回问题列表",
+    team_title: "关于开发人员", whatsapp_chat: "与我们聊天", bot_greeting: "您好！我是 Eleviq 的人工智能助手。", bot_connect_human: "联系人工客服", bot_back: "返回问题列表",
     handcrafted: "内罗毕精诚打造", all_rights: "版权所有。"
   }
 };

@@ -35,8 +35,6 @@ export default function Home(){
         </div>
       </section>
 
-      <Team />
-
       {/* Featured Project - MyHobbyPlan */}
       <section className="py-32 px-6 bg-slate-50 dark:bg-slate-950/30 overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -84,6 +82,8 @@ export default function Home(){
           </div>
         </div>
       </section>
+
+      <Team />
 
       {/* Modern CTA */}
       <section className="py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative">

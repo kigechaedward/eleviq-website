@@ -1,5 +1,11 @@
 export const PROJECTS = [
-  {name:'HobbyPlan', type:'SaaS', desc:'Hobby project management and monetization platform.'},
+  {
+    name: 'MyHobbyPlan',
+    type: 'SaaS',
+    desc: 'Hobby project management and monetization platform.',
+    url: 'https://kigechaedward.github.io/Myhobbyplan-website/index.html',
+    featured: true
+  },
   {name:'Abiri', type:'Logistics', desc:'Route optimization and fleet tracking.'},
   {name:'AniTrace', type:'Conservation', desc:'Wildlife tracking and analytics.'},
   {name:'AuraFlow', type:'Automation', desc:'Workflow automation for enterprises.'},

@@ -37,6 +37,54 @@ export default function Home(){
 
       <Team />
 
+      {/* Featured Project - MyHobbyPlan */}
+      <section className="py-32 px-6 bg-slate-50 dark:bg-slate-950/30 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal-on-scroll order-2 lg:order-1">
+              <div className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-black uppercase tracking-widest mb-6">
+                Featured Product
+              </div>
+              <h2 className="font-heading text-4xl md:text-6xl font-bold uppercase mb-6 text-slate-900 dark:text-white leading-tight">
+                Master Your Passions with <span className="text-primary">MyHobbyPlan</span>
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl">
+                Eleviq's premier hobby management platform. Turn your projects into milestones and your passions into progress. Available now on Play Store.
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <a
+                  href="https://kigechaedward.github.io/Myhobbyplan-website/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-5 bg-slate-900 dark:bg-primary text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:shadow-cyan-glow hover:scale-105 transition-all duration-pro-base"
+                >
+                  Visit Website
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.myhobbyplanner"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-5 bg-white border border-slate-200 dark:bg-white/5 dark:border-white/10 text-slate-900 dark:text-white font-black uppercase tracking-widest rounded-2xl hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-pro-base"
+                >
+                  Get on Play Store
+                </a>
+              </div>
+            </div>
+
+            <div className="reveal-on-scroll order-1 lg:order-2 relative">
+              <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-[100px] -z-10 animate-pulse"></div>
+              <div className="relative rounded-[3rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
+                  alt="MyHobbyPlan Interface"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Modern CTA */}
       <section className="py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
         <div className="max-w-5xl mx-auto reveal-on-scroll">

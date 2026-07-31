@@ -28,28 +28,41 @@ export default function Portfolio(){
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {PROJECTS.map((p, i) => (
-              <div key={i} className="reveal-on-scroll group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="relative overflow-hidden rounded-t-lg aspect-[4/3] bg-slate-900">
-                  <img
-                    src={projectImages[i]}
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-pro-base"
-                  />
-                  <div className="absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-pro-base">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-5xl font-light">
-                      +
-                    </div>
+              <div key={i} className="reveal-on-scroll group" style={{ transitionDelay: `${i * 100}ms` }}>
+                <a
+                  href={p.url || '#'}
+                  target={p.url ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                  className={`block ${p.url ? 'cursor-pointer' : 'cursor-default'}`}
+                >
+                  <div className="relative overflow-hidden rounded-t-lg aspect-[4/3] bg-slate-900">
+                    <img
+                      src={projectImages[i]}
+                      alt={p.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-pro-base"
+                    />
+                    {p.url && (
+                      <div className="absolute inset-0 bg-primary/90 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-pro-base px-6 text-center">
+                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-5xl font-light mb-4">
+                          +
+                        </div>
+                        <span className="text-white font-heading font-bold uppercase tracking-widest text-sm">View Project</span>
+                      </div>
+                    )}
                   </div>
-                </div>
 
-                <div className="bg-white dark:bg-slate-900 p-8 text-center rounded-b-lg shadow-sm border border-slate-100 dark:border-slate-800">
-                  <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors tracking-tighter">
-                    {p.name}
-                  </h3>
-                  <p className="text-slate-500 dark:text-slate-400 font-medium italic text-xs uppercase tracking-widest">
-                    {p.type}
-                  </p>
-                </div>
+                  <div className="bg-white dark:bg-slate-900 p-8 text-center rounded-b-lg shadow-sm border border-slate-100 dark:border-slate-800 h-full">
+                    <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white uppercase mb-2 group-hover:text-primary transition-colors tracking-tighter">
+                      {p.name}
+                    </h3>
+                    <p className="text-slate-500 dark:text-slate-400 font-medium italic text-xs uppercase tracking-widest mb-4">
+                      {p.type}
+                    </p>
+                    <p className="text-slate-600 dark:text-slate-500 text-sm line-clamp-2">
+                      {p.desc}
+                    </p>
+                  </div>
+                </a>
               </div>
             ))}
           </div>
